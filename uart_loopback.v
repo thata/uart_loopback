@@ -28,8 +28,11 @@ module uart_loopback(
     .rst(rst),                        // Synchronous reset
     .rx(rx),                          // Incoming serial line
     .tx(tx),                          // Outgoing serial line
+    // transmitがtrueにセットされるとTXへの送信が開始される
+    // 再度TXへ送信したい場合は一度falseに戻したのち再度trueをセットする必要がある
     .transmit(flag),                  // Signal to transmit
     .tx_byte(data),                   // Byte to transmit
+    // RXからデータを受信した場合にtrueがセットされ、1クロックの間保持したのち、再度falseに戻る
     .received(flag),                  // Indicated that a byte has been received
     .rx_byte(data),                   // Byte received
     .is_receiving(),                  // Low when receive line is idle

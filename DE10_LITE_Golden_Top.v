@@ -121,7 +121,11 @@ module DE10_LITE_Golden_Top(
 //  REG/WIRE declarations
 //=======================================================
 
+// RX（受信）の状態をLEDR0へ表示
+assign LEDR[0] = ~ARDUINO_IO[0];
 
+// TXの状態をLEDR1へ表示
+assign LEDR[1] = ~ARDUINO_IO[1];
 
 
 //=======================================================
@@ -131,8 +135,8 @@ module DE10_LITE_Golden_Top(
   uart_loopback loopback0 (
     .clk(MAX10_CLK1_50),
     .rst(),
-    .rx(ARDUINO_IO[0]),
-    .tx(ARDUINO_IO[1])
+    .rx(ARDUINO_IO[0]), // USBシリアル変換アダプタの TX と接続
+    .tx(ARDUINO_IO[1])  // USBシリアル変換アダプタの RX と接続
   );
 
 endmodule
