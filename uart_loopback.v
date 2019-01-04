@@ -19,11 +19,11 @@ module uart_loopback(
   // 下位モジュール呼び出し
   //------------------------
 
-	uart #(
+  uart #(
     .baud_rate(9600),                 // default is 9600
     .sys_clk_freq(50000000)           // default is 100000000
-	)
-	instance_name(
+  )
+  instance_name(
     .clk(clk),                        // The master clock for this module
     .rst(rst),                        // Synchronous reset
     .rx(rx),                          // Incoming serial line
@@ -35,6 +35,6 @@ module uart_loopback(
     .is_receiving(),                  // Low when receive line is idle
     .is_transmitting(),               // Low when transmit line is idle
     .recv_error()                     // Indicates error in receiving packet.
-	);
+  );
 
 endmodule
